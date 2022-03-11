@@ -24,5 +24,5 @@ class State:
         
         return max
 
-    def updateQ(self, action, alpha, gamma, reward, next_Q) -> None:
-        self.actions[action] = self.getQ(action) + (alpha * (reward + (gamma * next_Q) - self.getQ(action)))
+    def updateQ(self, action, alpha, gamma, reward, next_maxQ) -> None:
+        self.actions[action] = self.getQ(action) + (alpha * (reward + (gamma * next_maxQ) - self.getQ(action)))

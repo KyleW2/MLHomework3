@@ -20,7 +20,7 @@ class Sarsa:
         return self.states[state].getQ(action)
     
     def updateValue(self, state: str, action: str, reward: int, next_state: str, next_action: str) -> None:
-        self.states[state].updateQ(action, self.alpha, self.gamma, reward, self.states[next_state].getQ(next_action))
+        self.states[state].updateQ(action, self.alpha, self.gamma, reward, self.states[next_state].getMaxQ())
     
     def runEpisode(self, episode: list) -> None:
         # Episodes must go: [[state -> action -> reward], ...]
