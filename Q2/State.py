@@ -9,5 +9,12 @@ class State:
     def getQ(self, action) -> float:
         return self.actions[action]
     
-    def updateQ(self, action, alpha, gamma, reward, next_Q) -> float:
+    def getQs(self) -> list:
+        out = []
+        for k, v in self.actions.items():
+            out.append((k, v))
+        return out
+
+    
+    def updateQ(self, action, alpha, gamma, reward, next_Q) -> None:
         self.actions[action] = self.getQ(action) + (alpha * (reward + (gamma * next_Q) - self.getQ(action)))
