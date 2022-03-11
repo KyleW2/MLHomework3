@@ -29,7 +29,7 @@ class TDLearning:
     
     def printValues(self):
         for k, v in self.states.items():
-            print(k + ": " + str(v.getValue()))
+            print("V(" + k + ") = " + str(v.getValue()))
             
 
 
