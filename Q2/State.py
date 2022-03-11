@@ -1,20 +1,13 @@
 
 class State:
-    def __init__(self, actions: list, probabilities = None, value = None) -> None:
+    def __init__(self, actions: list) -> None:
         self.actions = {}
 
         for i in range(0, len(actions)):
-            if probabilities != None:
-                self.actions[actions[i]] = probabilities[i]
-            else:
-                self.actions[actions[i]] = 0.0
-        
-        self.value = 0.0
-        if value != None:
-            self.value = value
+            self.actions[actions[i]] = 0.0
     
-    def getValue(self) -> float:
-        return self.value
+    def getQ(self, action) -> float:
+        return self.actions[action]
     
-    def updateValue(self, alpha, gamma, reward, next_value) -> float:
-        self.value = self.value + (alpha * (reward + (gamma * next_value) - self.value))
+    def updateQ(self, action, alpha, gamma, reward, next_Q) -> float:
+        self.actions[action] = self.getQ(action) + (alpha * (reward + (gamma * next_Q) - self.getQ(action)))
