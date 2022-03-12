@@ -27,6 +27,6 @@ class State:
     
     def updateElig(self, gamma: float, lam: float, is_state: bool) -> None:
         if is_state:
-            self.e = gamma * lam * self.e + 1
+            self.e += 1
         else:
             self.e = gamma * lam * self.e
