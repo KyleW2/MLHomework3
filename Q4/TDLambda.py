@@ -35,8 +35,8 @@ class TDLambda:
                     self.updateElig(episode[i][0], True)
                     self.updateValue(episode[i][0], episode[i][2], episode[i+1][0])
                 else:
-                    self.updateValue(episode[i][0], episode[i][2], episode[i+1][0])
                     self.updateElig(episode[i][0], False)
+                    self.updateValue(episode[i][0], episode[i][2], episode[i+1][0])
             
     def printValues(self):
         for k, v in self.states.items():
