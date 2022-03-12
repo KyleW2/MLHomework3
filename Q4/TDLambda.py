@@ -23,8 +23,12 @@ class TDLambda:
     def updateValue(self, state: str, reward: int, next_state: str) -> None:
         self.states[state].updateValue(self.alpha, self.gamma, reward, self.states[next_state].getValue())
     
-    def updateElig(self, state: str, is_state: bool):
+    def updateElig(self, state: str, is_state: bool) -> None:
         self.states[state].updateElig(self.gamma, self.lam, is_state)
+    
+    def resetElig(self) -> None:
+        for k, v in self.states.items():
+            v.resetElig()
     
     def runEpisode(self, episode: list) -> None:
         # Episodes must go: [[state -> action -> reward], ...]
@@ -53,6 +57,7 @@ if __name__ == "__main__":
     test.runEpisode(ep1)
     test.printValues()
 
+    test.resetElig()
     print()
 
     ep2 = [["Olympus", "fly", 2], ["Delphi", "fly", 4], ["Delos"]]

@@ -30,3 +30,6 @@ class State:
             self.e += 1
         else:
             self.e = gamma * lam * self.e
+    
+    def resetElig(self) -> None:
+        self.e = 0
