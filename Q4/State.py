@@ -24,6 +24,9 @@ class State:
     def updateValue(self, alpha, gamma, reward, next_value) -> None:
         delta = reward + (gamma * next_value) - self.value
         self.value = self.value + (alpha * delta * self.e)
+
+    def updateValuePreDelta(self, alpha, delta) -> None:
+        self.value = self.value + (alpha * delta * self.e)
     
     def updateElig(self, gamma: float, lam: float, is_state: bool) -> None:
         if is_state:
